@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha a Ocasião</title>
+</head>
+<body>
+    <h2>Escolha a Ocasião</h2>
+    <form action="/analyze" method="post">
+        <input type="hidden" name="file_path" value="{{ file_path }}">
+        <label for="occasion">Selecione a ocasião:</label>
+        <select name="occasion" id="occasion" required>
+            <option value="casual">Casual</option>
+            <option value="formal">Formal</option>
+            <option value="esporte">Esporte</option>
+        </select>
+        <button type="submit">Analisar</button>
+    </form>
+</body>
+</html>
