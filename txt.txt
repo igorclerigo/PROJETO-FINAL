@@ -1,0 +1,32 @@
+DROP DATABASE IF EXISTS moda;
+CREATE DATABASE moda;
+USE moda;
+
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    categoria_roupa VARCHAR(50),
+    cor_roupa VARCHAR(50),
+    imagem_path VARCHAR(255)
+);
+INSERT INTO produtos (categoria_roupa, cor_roupa, imagem_path) VALUES 
+	('casaco', 'branco', 'C:/Users/Igor/Documents/GitHub/senac_python/ProjetoFinal/produto2.jpg'),
+    ('calça', 'preto', 'C:/Users/Igor/Documents/GitHub/senac_python/ProjetoFinal/produto1.jpg'),
+    ('tênis', 'azul', 'C:/Users/Igor/Documents/GitHub/senac_python/ProjetoFinal/produto3.jpg');
+    
+--------------------------------------------------------------------------------------------------------------
+
+CREATE DATABASE moda;
+USE moda;
+CREATE TABLE roupas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL,
+    cor VARCHAR(50) NOT NULL
+);
+
+INSERT INTO roupas (tipo, cor) VALUES
+('camisa', 'vermelho'),
+('calça', 'verde'),
+('tênis', 'azul'),
+('camisa', 'verde'),
+('calça', 'azul'),
+('tênis', 'vermelho');
