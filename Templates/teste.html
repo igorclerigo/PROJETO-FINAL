@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Pesquisa </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="moda.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Pesquise <span>Aqui</span></h1>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Buscar produtos...">
+        <button onclick="searchProduct()">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <div id="no-results" class="no-results" style="display: none;">
+        Nenhum Produto Encontrado.
+    </div>
+
+    <div id="products" class="products">
+        <!-- Produtos serão inseridos aqui dinamicamente -->
+    </div>
+
+    <img src="logo.jpg" alt="Logo" class="logo">
+
+    <script>
+        const products = [
+            {
+                name: 'Blusa Branca',
+                image: 'blusa branca.png',
+                link: 'login.html'
+            },
+            {
+                name: 'Blusa Preta',
+                image: 'blusa preta.png',
+                link: 'login.html'
+            },
+            {
+                name: 'Calça Preta',
+                image: 'calça preta.png',
+                link: 'login.html'
+            },
+       
+            {
+                name: 'Blusa Branca',
+                image: 'blusa branca.png',
+                link: 'login.html'
+            },
+            {
+                name: 'tenis branco F1',
+                image: 'tenis branco F1',
+                link: 'login.html'
+            },
+            {
+                name: 'Calça Preta',
+                image: 'calça preta.png',
+                link: 'login.html'
+            }
+        ];
+
+    
+
+
+        function displayProducts(filteredProducts) {
+            const productsContainer = document.getElementById('products');
+            productsContainer.innerHTML = '';
+
+            if (filteredProducts.length === 0) {
+                document.getElementById('no-results').style.display = 'block';
+                productsContainer.style.display = 'none';
+            } else {
+                document.getElementById('no-results').style.display = 'none';
+                productsContainer.style.display = 'flex';
+
+                filteredProducts.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.className = 'product';
+                    productElement.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <a href="${product.link}">
+                            <button>Comprar</button>
+                        </a>
+                    `;
+                    productsContainer.appendChild(productElement);
+                });
+            }
+        }
+
+        function searchProduct() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(input)
+            );
+            displayProducts(filteredProducts);
+        }
+
+        // Mostrar todos os produtos inicialmente
+        displayProducts(products);
+    </script>
+</body>
+</html>
+
