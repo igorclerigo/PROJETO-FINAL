@@ -137,3 +137,79 @@ body {
 span{
     color: #ca0000;
 }
+
+
+/* texte de boas vindas*/
+.welcome-message {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    color: #000000;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+.welcome-message.fade-out {
+    opacity: 0;
+}
+   
+    .header {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .header h1 span {
+        color: #f50505;
+    }
+    
+    /* coreusel de onde esta escrito o pesquuise aqui*/
+    .carousel {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .carousel img {
+        max-width: 100%;
+        max-height: 200px;
+        margin: 0 10px;
+        transition: transform 0.3s;
+    }
+    .header {
+        background-color: #f8f9fa; /* Cor de fundo */
+        padding: 20px; /* Espaçamento interno */
+        text-align: center; /* Centralizar texto */
+        border-bottom: 2px solid #ddd; /* Linha inferior */
+    }
+
+    .header h1 {
+        font-size: 36px; /* Tamanho da fonte */
+        color: #333; /* Cor do texto */
+        margin: 0; /* Remover margens */
+        font-family: 'Bona Nova SC', serif; /* Fonte personalizada */
+    }
+
+    .header h1 span {
+        color: #f90000; /* Cor diferente para o span */
+    }
+
+
+
+    /*destaques da loja*/
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .producti {
+        width: 30%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    #featured-products h2 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
