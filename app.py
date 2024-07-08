@@ -15,6 +15,10 @@ def analyze_image(image_path):
         img = Image.open(image_path)
         model = genai.GenerativeModel(model_name="gemini-1.5-flash")
         response = model.generate_content(["Analise esta imagem e descreva as roupas e suas cores.", img])
+        
+        if not response or not hasattr(response, 'text'):
+            return "Erro ao analisar a imagem: Nenhuma resposta válida recebida."
+        
         return response.text
     except UnidentifiedImageError:
         return "Erro ao analisar a imagem: Arquivo de imagem não identificado."
@@ -50,7 +54,6 @@ def add_shopping_suggestions(description, occasion):
         }
     }
 
-    existing_items = ["camisa", "jeans", "calça", "tênis", "sapato", "cinto"]
     filtered_items = [item for item in suggestions[occasion]["items"] if item["name"].split()[0] not in description]
 
     suggestion_text = suggestions[occasion]["description"]

@@ -1,24 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload de Imagem</title>
+    <title>Upload de Imagem e Recomendação de Roupas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/moda.css') }}">
 </head>
 <body>
-    <h2>Upload de Imagem para Análise</h2>
-    <form action="/occasion" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <button type="submit">Enviar</button>
-    </form>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
+    <div class="welcome-message" id="welcome-message">
+        Bem-vindo ao nosso site de recomendações de roupas!
+    </div>
+
+    <div class="header">
+        <h1>Estilo no lugar certo? <span>Vem que nos te ajudamos</span></h1>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Buscar produtos...">
+        <button onclick="searchProduct()">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <div class="upload-form">
+        <h2>Upload de Imagem para Análise</h2>
+        <form action="/occasion" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Enviar</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div id="no-results" class="no-results" style="display: none;">
+        Nenhum Produto Encontrado.
+    </div>
+
+    <div id="products" class="products">
+        <!-- Produtos serão inseridos aqui dinamicamente -->
+    </div>
+
+    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+
+    <script>
+        const products = [
+            {
+                name: 'Blusa Azul',
+                image: '{{ url_for('static', filename='images/blusa_azul.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Calça Azul',
+                image: '{{ url_for('static', filename='images/calca_azul.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Calça Azul 1',
+                image: '{{ url_for('static', filename='images/calca_azul1.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Calça Azul 2',
+                image: '{{ url_for('static', filename='images/calca_azul2.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Calça Azul 3',
+                image: '{{ url_for('static', filename='images/calca_azul3.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Camisa Azul 2',
+                image: '{{ url_for('static', filename='images/camisa_azul2.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Camisa Polo Azul',
+                image: '{{ url_for('static', filename='images/camisa_polo_azul.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Camisa Polo Azul 1',
+                image: '{{ url_for('static', filename='images/camisa_polo_azul1.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Camisa Polo Azul 2',
+                image: '{{ url_for('static', filename='images/camisa_polo_azul2.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Camisa Polo Vermelho',
+                image: '{{ url_for('static', filename='images/camisa_polo_vermelho.jpg') }}',
+                link: 'login.html'
+            }
+        ];
+
+        function displayProducts(filteredProducts) {
+            const productsContainer = document.getElementById('products');
+            productsContainer.innerHTML = '';
+
+            if (filteredProducts.length === 0) {
+                document.getElementById('no-results').style.display = 'block';
+                productsContainer.style.display = 'none';
+            } else {
+                document.getElementById('no-results').style.display = 'none';
+                productsContainer.style.display = 'flex';
+
+                filteredProducts.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.className = 'product';
+                    productElement.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <a href="${product.link}">
+                            <button>Comprar</button>
+                        </a>
+                    `;
+                    productsContainer.appendChild(productElement);
+                });
+            }
+        }
+
+        function searchProduct() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(input)
+            );
+            displayProducts(filteredProducts);
+        }
+
+        // Mostrar todos os produtos inicialmente
+        displayProducts(products);
+
+        // Aplicar a classe fade-out após 3 segundos
+        setTimeout(() => {
+            document.getElementById('welcome-message').classList.add('fade-out');
+        }, 3000);
+    </script>
 </body>
 </html>
