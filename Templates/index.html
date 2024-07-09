@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/moda.css') }}">
 </head>
 <body>
+    
     <div class="welcome-message" id="welcome-message">
         Bem-vindo ao nosso site de recomendações de roupas!
     </div>
 
     <div class="header">
-        <h1>Estilo no lugar certo? <span>Vem que nos te ajudamos</span></h1>
+        <h1>Estilo no lugar certo? <span>Vem que nos te ajudamos</span></h1><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
     </div>
 
     <div class="search-bar">
@@ -51,37 +52,33 @@
         <!-- Produtos serão inseridos aqui dinamicamente -->
     </div>
 
-    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+    
 
     <script>
         const products = [
             {
-                name: 'Blusa Azul',
+                name: 'Blusa Azul Marinho',
                 image: '{{ url_for('static', filename='images/blusa_azul.jpg') }}',
                 link: 'login.html'
             },
             {
-                name: 'Calça Azul',
+                name: 'Calça Azul Creed',
                 image: '{{ url_for('static', filename='images/calca_azul.jpg') }}',
                 link: 'login.html'
             },
             {
-                name: 'Calça Azul 1',
+                name: 'Calça Azul jeans',
                 image: '{{ url_for('static', filename='images/calca_azul1.jpg') }}',
                 link: 'login.html'
             },
+           
             {
-                name: 'Calça Azul 2',
-                image: '{{ url_for('static', filename='images/calca_azul2.jpg') }}',
-                link: 'login.html'
-            },
-            {
-                name: 'Calça Azul 3',
+                name: 'Calça Azul Tradicional',
                 image: '{{ url_for('static', filename='images/calca_azul3.jpg') }}',
                 link: 'login.html'
             },
             {
-                name: 'Camisa Azul 2',
+                name: 'Camisa Azul Claro',
                 image: '{{ url_for('static', filename='images/camisa_azul2.jpg') }}',
                 link: 'login.html'
             },
@@ -90,21 +87,13 @@
                 image: '{{ url_for('static', filename='images/camisa_polo_azul.jpg') }}',
                 link: 'login.html'
             },
+           
             {
-                name: 'Camisa Polo Azul 1',
-                image: '{{ url_for('static', filename='images/camisa_polo_azul1.jpg') }}',
-                link: 'login.html'
-            },
-            {
-                name: 'Camisa Polo Azul 2',
+                name: 'Camisa Polo Azul Reserva',
                 image: '{{ url_for('static', filename='images/camisa_polo_azul2.jpg') }}',
                 link: 'login.html'
             },
-            {
-                name: 'Camisa Polo Vermelho',
-                image: '{{ url_for('static', filename='images/camisa_polo_vermelho.jpg') }}',
-                link: 'login.html'
-            }
+           
         ];
 
         function displayProducts(filteredProducts) {
