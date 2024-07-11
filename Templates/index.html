@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/moda.css') }}">
+    
 </head>
 <body>
-    
     <div class="welcome-message" id="welcome-message">
         Bem-vindo ao nosso site de recomendações de roupas!
     </div>
@@ -52,18 +52,16 @@
         <!-- Produtos serão inseridos aqui dinamicamente -->
     </div>
 
-    
-
     <script>
         const products = [
             {
-                name: 'Blusa Azul Marinho',
-                image: '{{ url_for('static', filename='images/blusa_azul.jpg') }}',
+                name: 'Tenis Nike Preto',
+                image: '{{ url_for('static', filename='images/tenis_preto.jpg') }}',
                 link: 'login.html'
             },
             {
-                name: 'Calça Azul Creed',
-                image: '{{ url_for('static', filename='images/calca_azul.jpg') }}',
+                name: 'Sandalia Rosa',
+                image: '{{ url_for('static', filename='images/sandalia_rosa.jpg') }}',
                 link: 'login.html'
             },
             {
@@ -71,7 +69,6 @@
                 image: '{{ url_for('static', filename='images/calca_azul1.jpg') }}',
                 link: 'login.html'
             },
-           
             {
                 name: 'Calça Azul Tradicional',
                 image: '{{ url_for('static', filename='images/calca_azul3.jpg') }}',
@@ -87,13 +84,36 @@
                 image: '{{ url_for('static', filename='images/camisa_polo_azul.jpg') }}',
                 link: 'login.html'
             },
-           
             {
-                name: 'Camisa Polo Azul Reserva',
-                image: '{{ url_for('static', filename='images/camisa_polo_azul2.jpg') }}',
+                name: 'Sandalia Marrom',
+                image: '{{ url_for('static', filename='images/sandalia_marron.jpg') }}',
                 link: 'login.html'
             },
-           
+            {
+                name: 'Casaco Branco',
+                image: '{{ url_for('static', filename='images/casaco_branco.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Sobre Tudo',
+                image: '{{ url_for('static', filename='images/casaco_bege.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Tenis Marrom',
+                image: '{{ url_for('static', filename='images/tenis_marrom.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Tenis Branco',
+                image: '{{ url_for('static', filename='images/tenis_branco.jpg') }}',
+                link: 'login.html'
+            },
+            {
+                name: 'Tenis Azul',
+                image: '{{ url_for('static', filename='images/tenis_azul.jpg') }}',
+                link: 'login.html'
+            },
         ];
 
         function displayProducts(filteredProducts) {
@@ -113,9 +133,7 @@
                     productElement.innerHTML = `
                         <img src="${product.image}" alt="${product.name}">
                         <h3>${product.name}</h3>
-                        <a href="${product.link}">
-                            <button>Comprar</button>
-                        </a>
+                        <button onclick="window.location.href='https://pagseguro.uol.com.br/para-seu-negocio/online/link-de-pagamento#'">Comprar</button>
                     `;
                     productsContainer.appendChild(productElement);
                 });
